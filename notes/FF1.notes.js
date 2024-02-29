@@ -119,4 +119,20 @@ creds = {
   email : "sina@gmail.com",
 }
 !HINT: Custom type must start with a upperCase letter
+
+@ When to use "interface" and when to use "type"?:
+++ - "type" can be used everywhere but "interface" is limited to just objects
+
+++ - We can implment classes to the interface type
+
+class AuthCredentials implements Credentials{
+  email : string;
+  password: string;
+  username : string;
+}
+
+function login(credentials : Credentials){}
+login(new AuthCredentials())
+
+++ - "interface" is extendable (We can use it so many times with different values)
 */
