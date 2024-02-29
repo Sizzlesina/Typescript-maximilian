@@ -88,13 +88,13 @@ calculate(5,4,add);
 ++ So we do this:
 @ Using the "type" keyword we can make custom types :
 
-type addFn = (a : number , b: number) => number
+type AddFn = (a : number , b: number) => number
 function calculate(a:number,b:number,calcFn:addFn)[
   calcFn(a,b);
 ]
 
 ++ String or Number custom type:
-type stringOrNum = string | number;
+type StringOrNum = string | number;
 
 ++ Object custom type:
 type User = {
@@ -104,4 +104,19 @@ type User = {
   id : stringOrNum;
 }
 let user = User;
+
+@ Another way of writing custom types for objects:
+++ Using the "interface" keyword:
+interface Credentials {
+  password : string;
+  email : string;
+}
+
+let creds = Credentials;
+
+creds = {
+  password: "abc",
+  email : "sina@gmail.com",
+}
+!HINT: Custom type must start with a upperCase letter
 */

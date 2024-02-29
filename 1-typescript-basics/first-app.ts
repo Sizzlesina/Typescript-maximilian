@@ -24,12 +24,12 @@ let user : object;
 */
 
 // ++ Custom type:
-type stringOrNum = string | number;
+type StringOrNum = string | number;
 type User = {
   name: string;
   age: number;
   isAdmin: boolean;
-  id: stringOrNum;
+  id: StringOrNum;
 };
 
 let user: User;
@@ -62,13 +62,23 @@ function add(a: number, b: number): number {
 }
 
 // ++ Custom type
-type addFn = (a: number, b: number) => number;
+type AddFn = (a: number, b: number) => number;
 function calculate(
   a: number,
   b: number,
   // calcFn: (a: number, b: number) => number
-  calcFn: addFn
+  calcFn: AddFn
 ) {
   calcFn(a, b);
 }
 calculate(5, 3, add);
+
+interface Credentials {
+  password: string;
+  email: string;
+}
+let creds : Credentials;
+creds = {
+  password: "abc",
+  email:"sina@gmail.com"
+}
