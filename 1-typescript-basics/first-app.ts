@@ -41,7 +41,15 @@ hobbies = ["Sports", "Cooking", "Reading"];
 
 const API_KEY = "abc";
 
-function add(a: number, b: number): void {
+function add(a: number, b: number): number {
   const result = a + b;
-  console.log(result);
+  return result;
 }
+function calculate(
+  a: number,
+  b: number,
+  calcFn: (a: number, b: number) => number
+) {
+  calcFn(a, b);
+}
+calculate(5, 3, add);

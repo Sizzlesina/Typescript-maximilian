@@ -67,4 +67,21 @@ function functionName(parameter1: type, paremeter2: type): return type of the fu
   commands
 }
 
+@ How to expect a function to receive a function?:
+- In functions we can pass in another function as a parameter 
+! BUT CAN WE PASS IT LIKE THIS ? :
+function calculate(a:number,b:number,calcFn){
+  calcFn(a,b);
+}
+++ The answer is no we cant do this instead we set the type of the function that we pass. Look at this example:
+function add(a:number,b:number){
+  const result = a + b;
+  return result;
+}
+function calculate( a:number ,b:number,calcFn(a:number,b:number)=> number){
+  calcFn(a,b);
+}
+calculate(5,4,add);
+
+
 */
