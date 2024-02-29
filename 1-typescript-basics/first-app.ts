@@ -18,14 +18,29 @@ console.log(userId);
 userId = 123;
 console.log(userId);
 
-// let user;
-// let user : object;
+/*
+let user;
+let user : object;
+*/
+
+// ++ Custom type:
+type stringOrNum = string | number;
+type User = {
+  name: string;
+  age: number;
+  isAdmin: boolean;
+  id: stringOrNum;
+};
+
+let user: User;
+/*
 let user: {
   name: string;
   age: number;
   isAdmin: boolean;
-  id: string | number;
+  id: stringOrNum;
 };
+*/
 user = {
   name: "Max",
   age: 12,
@@ -45,10 +60,14 @@ function add(a: number, b: number): number {
   const result = a + b;
   return result;
 }
+
+// ++ Custom type
+type addFn = (a: number, b: number) => number;
 function calculate(
   a: number,
   b: number,
-  calcFn: (a: number, b: number) => number
+  // calcFn: (a: number, b: number) => number
+  calcFn: addFn
 ) {
   calcFn(a, b);
 }

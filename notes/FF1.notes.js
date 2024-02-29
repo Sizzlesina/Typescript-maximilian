@@ -83,5 +83,25 @@ function calculate( a:number ,b:number,calcFn(a:number,b:number)=> number){
 }
 calculate(5,4,add);
 
+@ How to make custom types:
+- For example in the senario above we want the function to have its own type and every function with the type simillar to it have a type name 
+++ So we do this:
+@ Using the "type" keyword we can make custom types :
 
+type addFn = (a : number , b: number) => number
+function calculate(a:number,b:number,calcFn:addFn)[
+  calcFn(a,b);
+]
+
+++ String or Number custom type:
+type stringOrNum = string | number;
+
+++ Object custom type:
+type User = {
+  name : string;
+  age : number;
+  isAdmin : boolean;
+  id : stringOrNum;
+}
+let user = User;
 */
