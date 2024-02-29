@@ -77,8 +77,36 @@ interface Credentials {
   password: string;
   email: string;
 }
-let creds : Credentials;
+let creds: Credentials;
 creds = {
   password: "abc",
-  email:"sina@gmail.com"
+  email: "sina@gmail.com",
+};
+/*
+type Admin = {
+  permission: string[];
+};
+type AppUser = {
+  username: string;
+};
+type AppAdmin = Admin & AppUser;
+
+let admin: AppAdmin;
+admin = {
+  permission: ["login"],
+  username: "sina",
+};
+*/
+interface Admin {
+  permission: string[];
 }
+interface AppUser {
+  username: string;
+}
+interface AppAdmin extends Admin, AppUser {}
+
+let admin: AppAdmin;
+admin = {
+  permission: ["login"],
+  username: "sina",
+};

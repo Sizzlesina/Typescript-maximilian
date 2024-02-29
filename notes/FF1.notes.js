@@ -135,4 +135,32 @@ function login(credentials : Credentials){}
 login(new AuthCredentials())
 
 ++ - "interface" is extendable (We can use it so many times with different values)
+
+@ Merging types:
+- Maybe one day we need to merge two or more types together so we can use the "&" operator:
+++ Example:
+type AppUser = {
+  username : string;
+}
+type Admin = {
+  permission : string[];
+}
+type AppAdmin = Admin & AppUser;
+
+let admin : AppAdmin;
+admin = {
+  permission: ["login"],
+  username : "sina",
+}
+
+! We can do the same with interface keyword:
+interface Admin {
+  permission : string[];
+}
+
+interface AppUser{
+  username : string;
+}
+
+interface AppAdmin extends Admin, AppUser{}
 */
