@@ -1,8 +1,15 @@
 /** @format */
-interface CourseGoalProps {
+// interface CourseGoalProps {
+//   title: string;
+//   description: string;
+
+import { type PropsWithChildren } from "react";
+
+// }
+type CourseGoalProps = PropsWithChildren<{
   title: string;
   description: string;
-}
+}>;
 function CourseGoal({ title, description }: CourseGoalProps) {
   return (
     <article>
