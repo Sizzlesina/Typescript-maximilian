@@ -43,10 +43,22 @@ function MyComponent({name,id,children}:MyComponentProps){
 import {type ReactNode} from 'react'
 
 
-++ Amother special React type this time using "type" keyword:
+++ Another special React type this time using "type" keyword:
 import {type PropsWithChildren} from 'react';
 type MyComponentProps = PropsWithChildren<{
 name:string;
 id: number;
 }>
+
+@ Accepting children props using arrow function components:
+import {type FC, type PropsWithChildren} from 'react';
+type MyCiomponentProps = PropsWithChildren<{
+name:string;
+id: number;
+}>
+
+const MyComponent : FC<MYComponentProps> = ({name,id}) => {
+  return <h1>My Component</h1>
+}
+
 */
