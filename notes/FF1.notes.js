@@ -218,4 +218,32 @@ const newUser = merge<{name : string} , {age : number}>({name : "Max"},{age : 20
 @ Or we can do it like this:
 const newUser = merge({name: "Max"}, {age : 20});
 console.log(newUser.name)
+
+
+@ Accepting props in React components:
+++ 1 :
+function MyComponent({name,id}: {
+  name: string; 
+  id:number
+}) {
+  return <h1>My Component</h1>
+}
+
+++ 2 :
+type MyComponentProps = {
+  name : string;
+  id: number;
+};
+function MyComponent({name,id}:MyComponentProps){
+  return <h1>My Component</h1>
+}
+
+++ 3 : 
+interface MyComponentProps {
+  name: string;
+  id : number;
+}
+function MyComponent({name,id}:MyComponentProps){
+  return <h1>My Component</h1>
+}
 */
