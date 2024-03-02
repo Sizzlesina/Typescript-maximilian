@@ -175,4 +175,47 @@ role = "abc"
 
 ! Now the other values are wrong (We can use | too and set the other values for the variable too)
 
+
+@ Generic types:
+- Types that work together with another type
+++ Example:
+
+let roles : Array<Role>
+roles = ['admin','editor'];
+
+@ We can create our own generic type:
+++ Example:
+type DataStorage<T> = {
+  storage : T[];
+  add : (data : T) => void; 
+};
+!HINT: T in here is just a placeholder
+
+const textStorage : DataStorage<string> = {
+  storage : [],
+  add(data) {
+    this.storage.push(data);
+  } 
+}
+! In here we pass the string type to the custom generic type that we create earlier 
+
+const userStorage : DataStorage<User> = {
+  storage : [],
+  add(user){},
+};
+! User is a custom type that we create earlier 
+
+@ We can also create functions using generic types:
+++ Example:
+function merge<T,U>(a : T , b : U){
+  return {
+    ...a,
+    ...b,
+  };
+}
+@ Now we can pass in the parameters of the function like this:
+const newUser = merge<{name : string} , {age : number}>({name : "Max"},{age : 20});
+@ Or we can do it like this:
+const newUser = merge({name: "Max"}, {age : 20});
+console.log(newUser.name)
 */

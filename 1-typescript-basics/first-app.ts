@@ -123,3 +123,32 @@ function performAction(action: string | number, role: Role) {
     // ...
   }
 }
+
+type DataStorage<T> = {
+  storage: T[];
+  add: (data: T) => void;
+};
+
+const textStorage: DataStorage<string> = {
+  storage: [],
+  add(data) {
+    this.storage.push(data);
+  },
+};
+const useStorage: DataStorage<User> = {
+  storage: [],
+  add(user) {},
+};
+function merge<T, U>(a: T, b: U) {
+  return {
+    ...add,
+    ...b,
+  };
+}
+
+// const newUser = merge<{ name: string }, { age: number }>(
+//   { name: "Max" },
+//   { age: 20 }
+// );
+// @ Or we can write the newUser like this:
+const newUser = merge({ name: "Sina" }, { age: 20 });
