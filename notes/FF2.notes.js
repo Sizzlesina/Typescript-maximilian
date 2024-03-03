@@ -158,5 +158,9 @@ function handleSubmit(event : FormEvent<HTMLFormElement>){
 ++ const ref = useRef<HTMLInputElement>(null);
 - We can use a generic type for the ref which is optional and use a special type for the refs value in the input's
 * Now everything's fine and we can use our ref
- 
+
+
+@ How to clear the form when we submit it?
+- We can use this command for event:
+++ event.currentTarget.reset();
 */

@@ -11,11 +11,8 @@ function CourseGoalList({ goals, onDeleteGoal }: CourseGoalListProps) {
     <ul>
       {goals.map((goal) => (
         <li key={goal.id}>
-          <CourseGoal
-            title='Learn React + TS'
-            onDelete={onDeleteGoal}
-            id={goal.id}>
-            <p>Learn it from the ground up</p>
+          <CourseGoal title={goal.title} onDelete={onDeleteGoal} id={goal.id}>
+            <p>{goal.description}</p>
           </CourseGoal>
         </li>
       ))}
