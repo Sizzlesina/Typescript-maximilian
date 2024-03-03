@@ -132,4 +132,31 @@ function handleSubmit(event : FormEvent<HTMLFormElement>){
   event.preventDefault();
   new FormData(event.currentTarget) 
 }
+
+@ Using useRef hook in typescript:
+- When we want to use the useRef as the previouse syntax we do this:
+++ const ref = useRef();
+
+-But this will set the default value of the useRef to undefined and in typescript we cant use the undefined value so we set "null" as the default value of the useRef:
+++ const ref = useRef(null);
+
+- Now we may use the useRef variable inside an function like this:
+
+++ function handleSubmit(event){
+++  event.preventDefault();
+++  const enteredRef = ref.current.value;
+++ }
+
+- In this case we may get an error which says : ref.current is possibly 'null' 
+? So whats the solution to this problem?
+++ const enteredRef = ref.current!.value;
+
+- In this way we tell the typescript that the ref.current will never be null so we must be sure about the ref to use this syntax
+
+- Now we will get an error in the value part which says : Property 'value' does not exist on type 'never'
+? So now what to do?
+++ const ref = useRef<HTMLInputElement>(null);
+- We can use a generic type for the ref which is optional and use a special type for the refs value in the input's
+* Now everything's fine and we can use our ref
+ 
 */
