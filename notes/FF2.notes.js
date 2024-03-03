@@ -66,6 +66,18 @@ const MyComponent : FC<MYComponentProps> = ({name,id}) => {
 }
 
 @ How to fix eslint in a typescript React project?:
-- When we create a vite project just in the .eslint.cjs file in the rules just remove the commands written by the vite project starters and then replace this line of code :
-++ "@typescript-eslint/no-var-requires": "off"
+++ - When we create a vite project just in the .eslint.cjs file in the rules just remove the commands written by the vite project starters and then replace this line of code :
+
+  "@typescript-eslint/no-unused-vars": [
+      "warn",
+      {
+        args: "all",
+        argsIgnorePattern: "^_",
+        caughtErrors: "all",
+        caughtErrorsIgnorePattern: "^_",
+        destructuredArrayIgnorePattern: "^_",
+        varsIgnorePattern: "^_",
+        ignoreRestSiblings: true,
+      },
+    ],
 */
