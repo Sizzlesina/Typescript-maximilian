@@ -104,4 +104,19 @@ const [goals,setGoals] = useState<CourseGoal[]>([]);
 function handleAddGoal(){
   setGoals();
 };
+
+@ Similar types:
+- When in two components we have a same type (same values and properties ) we can export one type and then use it in the another one
+++ Example:
+@ First component
+export type MainType = {
+  title : string;
+  name : string;
+  id : number;
+}
+@ Second component:
+import{type MainType as CustomName} from "First component"
+type secondaryType = {
+  property : CustomName[];
+}
 */
