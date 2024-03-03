@@ -8,15 +8,13 @@ import { type PropsWithChildren } from "react";
 // }
 type CourseGoalProps = PropsWithChildren<{
   title: string;
-  description: string;
 }>;
-function CourseGoal({ title, description }: CourseGoalProps) {
-
+function CourseGoal({ title, children }: CourseGoalProps) {
   return (
     <article>
       <div>
         <h2>{title}</h2>
-        <p>{description}</p>
+        {children}
       </div>
       <button>Delete</button>
     </article>

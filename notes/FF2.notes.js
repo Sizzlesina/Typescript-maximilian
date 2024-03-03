@@ -53,6 +53,9 @@ type MyComponentProps = PropsWithChildren<{
 name:string;
 id: number;
 }>
+function MyComponent({name,children}:PropsWithChildren) {
+  return <h1>My Component</h1>
+};
 
 @ Accepting children props using arrow function components:
 import {type FC, type PropsWithChildren} from 'react';
@@ -61,7 +64,7 @@ name:string;
 id: number;
 }>
 
-const MyComponent : FC<MYComponentProps> = ({name,id}) => {
+const MyComponent : FC<MYComponentProps> = ({name,id,children}) => {
   return <h1>My Component</h1>
 }
 
