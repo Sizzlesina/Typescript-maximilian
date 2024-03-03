@@ -125,4 +125,11 @@ type secondaryType = {
 @ FormEvent
 - This type is for event's 
 
+@ How to use the currentTarget on a event on the handler function?
+- We can use the HTMLFormElement type that is a generic type inside the FormEvent type <>
+++ Example:
+function handleSubmit(event : FormEvent<HTMLFormElement>){
+  event.preventDefault();
+  new FormData(event.currentTarget) 
+}
 */
