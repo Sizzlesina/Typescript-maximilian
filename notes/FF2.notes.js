@@ -119,4 +119,10 @@ import{type MainType as CustomName} from "First component"
 type secondaryType = {
   property : CustomName[];
 }
+
+@ How to set type for "event" in handleSubmits:
+- When we want to have a hnadleSubmit event like handleSubmit we may pass a event parameter in the function but we should add the type to event which is a special type:
+@ FormEvent
+- This type is for event's 
+
 */
