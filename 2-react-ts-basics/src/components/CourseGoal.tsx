@@ -11,6 +11,7 @@ type CourseGoalProps = PropsWithChildren<{
   description: string;
 }>;
 function CourseGoal({ title, description }: CourseGoalProps) {
+
   return (
     <article>
       <div>

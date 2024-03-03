@@ -1,8 +1,10 @@
 /** @format */
 
-import CourseGoal from "./components/CourseGoal";
+import CourseGoal from "./components/CourseGoal.tsx";
 
-function App() {
+export default function App() {
+  const s = "sian";
+
   return (
     <main>
       <CourseGoal
@@ -12,5 +14,3 @@ function App() {
     </main>
   );
 }
-
-export default App;

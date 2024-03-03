@@ -1,3 +1,7 @@
+/** @format */
+
+{/* prettier-ignore */}
+
 /*
 @ Accepting props in React components:
 ++ 1 :
@@ -61,4 +65,7 @@ const MyComponent : FC<MYComponentProps> = ({name,id}) => {
   return <h1>My Component</h1>
 }
 
+@ How to fix eslint in a typescript React project?:
+- When we create a vite project just in the .eslint.cjs file in the rules just remove the commands written by the vite project starters and then replace this line of code :
+++ "@typescript-eslint/no-var-requires": "off"
 */
