@@ -87,7 +87,7 @@ const MyComponent : FC<MYComponentProps> = ({name,id,children}) => {
 ++ Note: you must disable the base rule as it can report incorrect errors
     "no-unused-vars": "off",
     "@typescript-eslint/no-unused-vars": "warn",
-  },
+ 
 
 @ How to use states in typescript react? :
 - When in the default value of the states we have a complex value like null or [] or {} the value of the state will be set to <never> type
