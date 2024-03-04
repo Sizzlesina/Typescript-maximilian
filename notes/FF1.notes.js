@@ -37,7 +37,7 @@ function add (a:number , b : number){
 ++ boolean
 ++ object
 ++ {} :
-- in this way of setting the type we can set the name ana type of each property 
+- in this way of setting the type we can set the name and type of each property 
 ! Example:
 let user = {
   name : string;
@@ -55,12 +55,10 @@ user = {
 - In this type we have a array and in the <> we write the type of the values of the array
 ++ type[]:
 - Also we can write the Array<type> like this (These two are simillar)
-
 ++ undefined :
 - We can use this type for the functions that doesnt return anything
 ++ void:
 - Also we can use this type for the functions that doesnt return anything
-
 
 @ How to write functions in TS:
 function functionName(parameter1: type, paremeter2: type): return type of the function {
@@ -84,14 +82,14 @@ function calculate( a:number ,b:number,calcFn(a:number,b:number)=> number){
 calculate(5,4,add);
 
 @ How to make custom types:
-- For example in the senario above we want the function to have its own type and every function with the type simillar to it have a type name 
+- For example in the senario above we want the function to have its own type and every function with the simillar type to it have a type name 
 ++ So we do this:
 @ Using the "type" keyword we can make custom types :
 
-type AddFn = (a : number , b: number) => number
-function calculate(a:number,b:number,calcFn:addFn)[
+type AddFn = (a : number , b: number) => number;
+function calculate(a:number,b:number,calcFn:AddFn){
   calcFn(a,b);
-]
+}
 
 ++ String or Number custom type:
 type StringOrNum = string | number;
@@ -130,11 +128,12 @@ class AuthCredentials implements Credentials{
   password: string;
   username : string;
 }
+! The syntax above for when we want a class to use a custom type so we use the "implements" keyword in here
 
 function login(credentials : Credentials){}
 login(new AuthCredentials())
 
-++ - "interface" is extendable (We can use it so many times with different values)
+++ "interface" is extendable (We can use it so many times with different values)
 
 @ Merging types:
 - Maybe one day we need to merge two or more types together so we can use the "&" operator:
@@ -153,7 +152,7 @@ admin = {
   username : "sina",
 }
 
-! We can do the same with interface keyword:
+! We can do the same with interface keyword (But with different keyword):
 interface Admin {
   permission : string[];
 }
@@ -178,8 +177,9 @@ role = "abc"
 
 @ Generic types:
 - Types that work together with another type
-++ Example:
 
+++ Example:
+type Role = "admin" | "user" | "editor";
 let roles : Array<Role>
 roles = ['admin','editor'];
 
@@ -198,6 +198,12 @@ const textStorage : DataStorage<string> = {
   } 
 }
 ! In here we pass the string type to the custom generic type that we create earlier 
+type User = {
+  name: string;
+  age: number;
+  isAdmin: boolean;
+  id: StringOrNum;
+};
 
 const userStorage : DataStorage<User> = {
   storage : [],
@@ -217,8 +223,7 @@ function merge<T,U>(a : T , b : U){
 const newUser = merge<{name : string} , {age : number}>({name : "Max"},{age : 20});
 @ Or we can do it like this:
 const newUser = merge({name: "Max"}, {age : 20});
-console.log(newUser.name)
-
+++ In here the typescript can detect the type of the data passed to the function itself and its no need to pass in the type of it
 
 
 
