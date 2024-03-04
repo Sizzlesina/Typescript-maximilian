@@ -134,4 +134,8 @@ function Input({label,...props}:InputProps){
 
 !HINT: We can use any generic value inside the '' inside the <> we can check on that in the autocomplition of the vscode
 
+
+@ ElementType:
+- A special type that says the value must be a valid identifier of a component
+!HINT: This type used whenever we want to accept components as props
 */
