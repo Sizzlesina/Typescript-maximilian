@@ -31,7 +31,7 @@ function MyComponent({name,id}:MyComponentProps){
 }
 
 @ How to accept children in the props (What is the type of a children prop?):
-++ We can use a special type that can be used in React which is called ReactNode
+++ We can use a special type that can be used in React which is called "ReactNode"
 
 interface MyComponentProps{
   name: string;
@@ -46,7 +46,6 @@ function MyComponent({name,id,children}:MyComponentProps){
 ++ So its better to write "type" keyword before the imported ReactNode:
 import {type ReactNode} from 'react'
 
-
 ++ Another special React type this time using "type" keyword:
 import {type PropsWithChildren} from 'react';
 type MyComponentProps = PropsWithChildren<{
@@ -59,7 +58,7 @@ function MyComponent({name,children}:PropsWithChildren) {
 
 @ Accepting children props using arrow function components:
 import {type FC, type PropsWithChildren} from 'react';
-type MyCiomponentProps = PropsWithChildren<{
+type MyComponentProps = PropsWithChildren<{
 name:string;
 id: number;
 }>
@@ -91,7 +90,7 @@ const MyComponent : FC<MYComponentProps> = ({name,id,children}) => {
   },
 
 @ How to use states in typescript react? :
-- When in the default value of the states we have a complex value like null or [] or {} the value of the state will be set to <never< type
+- When in the default value of the states we have a complex value like null or [] or {} the value of the state will be set to <never> type
 
 ++ So what can we do?
 - Imagine we want to add a array full of custom type that we create earlier so we create the state like this:
@@ -104,6 +103,8 @@ const [goals,setGoals] = useState<CourseGoal[]>([]);
 function handleAddGoal(){
   setGoals();
 };
+
+! Now we have a state full of arrays which includes title and description and id properties
 
 @ Similar types:
 - When in two components we have a same type (same values and properties ) we can export one type and then use it in the another one
@@ -121,12 +122,11 @@ type secondaryType = {
 }
 
 @ How to set type for "event" in handleSubmits:
-- When we want to have a hnadleSubmit event like handleSubmit we may pass a event parameter in the function but we should add the type to event which is a special type:
+- When we want to have a handler function like handleSubmit we may pass a event parameter to it but we should add the type to that parameter which is a special type:
 @ FormEvent
-- This type is for event's 
-
-@ How to use the currentTarget on a event on the handler function?
-- We can use the HTMLFormElement type that is a generic type inside the FormEvent type <>
+- This type is for events
+@ How to use the event.currentTarget on a FormData inside the handler function?
+- We can use the "HTMLFormElement" type that is a generic type inside the "FormEvent" type <>
 ++ Example:
 function handleSubmit(event : FormEvent<HTMLFormElement>){
   event.preventDefault();
@@ -150,13 +150,12 @@ function handleSubmit(event : FormEvent<HTMLFormElement>){
 - In this case we may get an error which says : ref.current is possibly 'null' 
 ? So whats the solution to this problem?
 ++ const enteredRef = ref.current!.value;
-
-- In this way we tell the typescript that the ref.current will never be null so we must be sure about the ref to use this syntax
+! In this way we tell the typescript that the ref.current will never be null so we must be sure about the ref to use this syntax
 
 - Now we will get an error in the value part which says : Property 'value' does not exist on type 'never'
 ? So now what to do?
-++ const ref = useRef<HTMLInputElement>(null);
 - We can use a generic type for the ref which is optional and use a special type for the refs value in the input's
+++ const ref = useRef<HTMLInputElement>(null);
 * Now everything's fine and we can use our ref
 
 
