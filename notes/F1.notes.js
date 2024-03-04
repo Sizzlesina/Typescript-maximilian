@@ -54,7 +54,7 @@ user = {
 ++ Array<type>:
 - In this type we have a array and in the <> we write the type of the values of the array
 ++ type[]:
-- Also we can write the Array<type> like this (These two are simillar)
+- Also we can write the Array<type> like this (These two are similar)
 ++ undefined :
 - We can use this type for the functions that doesnt return anything
 ++ void:
@@ -82,7 +82,7 @@ function calculate( a:number ,b:number,calcFn(a:number,b:number)=> number){
 calculate(5,4,add);
 
 @ How to make custom types:
-- For example in the senario above we want the function to have its own type and every function with the simillar type to it have a type name 
+- For example in the senario above we want the function to have its own type and every function with the similar type to it have a type name 
 ++ So we do this:
 @ Using the "type" keyword we can make custom types :
 
