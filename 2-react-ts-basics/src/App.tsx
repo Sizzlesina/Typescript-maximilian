@@ -1,7 +1,7 @@
 /** @format */
 
 import Header from "./components/Header.tsx";
-import goalsImg from "../public/images/goals.jpg";
+import goalsImg from "/images/goals.jpg";
 import { useState } from "react";
 import CourseGoalList from "./components/CourseGoalList.tsx";
 import NewGoal from "./components/NewGoal.tsx";
