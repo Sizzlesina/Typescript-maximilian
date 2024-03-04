@@ -66,4 +66,32 @@ type InfoBoxPorps = {
 type InfoBoxProps = {
   severity : "high" | "low" | "medium" | undefined;
 }
+
+@ But this way is not good (So whats the best practice?):
+++ Take a look at this syntax:
+type FirstModeProps = {
+  mode : "mode1";
+  children : ReactNode;
+}
+type SecondModeProps = {
+ mode : "mode2";
+ severity : "high" | "low" | "medium";
+  children : ReactNode
+}
+type MyComponentProps = FirstModeProps | SecondModeProps;
+
+function MyComponent(props : MyComponentProps){
+  const {children,mode} = props;
+  if(mode "mode1"){
+    return (
+      ...
+    )
+  }
+  const {severity} = props;
+  return (
+    <h1 className={`class-${severity}`}>Hello World!</h1>
+  )
+}
+! Now we can pass in the severity prop whenever we in the mode2 and dont pass it when we in the mode1
+
 */
