@@ -94,4 +94,44 @@ function MyComponent(props : MyComponentProps){
 }
 ! Now we can pass in the severity prop whenever we in the mode2 and dont pass it when we in the mode1
 
+@ How to create wrapper components (gow to pass in props in the wrapper components):
+? - imagine we want to create a custome input component so we must accept props like "type" and "disabled" and so many props that we can accept for a input component.
+++ Example:
+type InputProps = {
+  label : string;
+}
+function Input({label}: InputProps){
+  return (
+    <form>
+    <label>{label}</label>
+    <input />
+    </form>
+  )
+} 
+? - So now we cant accept all the props that the input accepts so we can use the {...props} syntax from vanila javascript to accept all the props
+function Input({label,...props}){
+return (
+  <form>
+  <label>{label}</label>
+  <input {...props} />
+  </form>
+)
+}
+! But what about the type of this props?:
+++ We can use a special type for these kind of props:
+type InputProps = {
+  label : string;
+} & ComponentPropsWithoutRef<'input'>
+function Input({label,...props}:InputProps){
+  return (
+    <form>
+    <label>{label}</label>
+    <input {...props} />
+    </form>
+  )
+}
+! We must merge the type with our own types to have both types 
+
+!HINT: We can use any generic value inside the '' inside the <> we can check on that in the autocomplition of the vscode
+
 */
