@@ -203,4 +203,41 @@ function Container<C extends ElementType>({as , children , ...props} : Container
   const Component = as || "div";
   return <Component className="container" {...props}>{children}</Component>
 };
+
+
+@ How to forward refs in Typescript?:
+++ When we want to forward refs as a prop to the components in Typescript these codes wont work:
+
+@ 1:
+type ComponentProps = {
+  ref : ReactNode;
+} & ComponentPropsWithRef<'input'>;
+
+@ 2:
+type ComponentProps<T extends ElementType> = {
+  ....
+} & ComponentPropsWithRef<T>
+
+@ - So what can we do?:
+++ We use the "ComponentPropsWithoutRef" type as same as before but we will use a function which is a Vanila Js function to pass in Refs:
+
+type ComponentProps = {
+  label : string;
+  id : string;
+} & ComponentPropsWithoutRef<'input'>;
+
+const Component = forwardRef<HTMLInputElement,ComponentProps>(function Component({labe,id},ref){
+
+  return (
+    <label htmlFor={id}>{label}</label>
+    <input id={id} ref={ref} />
+  )
+})
+++ This "forwardRef" function accepts a generic type and the type for the props and then in the end of destructuring props we must pass in the ref (But not like the props ) and then use it whenever we want in our component
+
+@ Now in the Main Component:
+function MainComponent(){
+  const ref = useRef<HTMLInputElement>(null)
+  <Component label="This component is for an input" id="input" ref={ref}  />
+}
 */
