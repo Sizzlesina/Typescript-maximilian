@@ -137,5 +137,70 @@ function Input({label,...props}:InputProps){
 
 @ ElementType:
 - A special type that says the value must be a valid identifier of a component
-!HINT: This type used whenever we want to accept components as props
+!HINT: This type says is used when we want to pass in components as prop
+++ Example:
+@ Main Component :
+import SomeComponent from "./SomeDirectory";
+function MainComponent(){
+  <Container as={SomeComponent} />
+}
+
+@ Container Component:
+type ContainerProps = {
+  as : ElementType;
+}
+function Container({as}:ContainerProps){
+  const Component = as;
+  return <Component />;
+}
+@ Or we could use as like this:
+function Container({as : Component}:ContainerProps){
+  return <Component />;
+}
+
+@ Polymorphic Components:
+++ We can make an Polymorphic component like a container and the concept of this work is to apply some styling for the component that we pass to the container as a "as" prop
+? So lets create the Container component step by step:
+++ Step 1:
+type ContainerProps ={
+  as : ElementType;
+  children:ReactNode;
+}
+function Container({as,children}:ContainerProps){
+  const Component = as;
+  return <Component>{children}</Component>
+}
+! Now the component accepts children and we can use it like this:
+function MainComponent(){
+  return <Container as={Button}>Click Me!</Container>
+}
+
+++ Step 2:
+type ContainerProps<T extends ElementType> = {
+as : T;
+children : ReactNode;
+} & ComponentPropsWithoutRef<T>;
+
+function Container<C extends ElementType>({as,children}:ContainerProps<C>){
+  const Component = as || "div";
+  return <Component className="container">{children}</Component>
+};
+
+! In this step we want to accept all the props to the custom component or the built in elements so we make an generic type and tell typescript that this generic type extends from the ElementType which then wont allow us to pass in any value and force us to just pass in components as a value
+
+! BUT we must pass in another generic type (same as the last one ) for the component and the prop types of the component
+
+! Then we will get another error in the JSX part of the code and then we should pass in a default value for that Component that passed in as a "as" prop
+
+++ Step 3:
+- Now lets make this Container component more flexible by passing the rest props to it:
+type ContainerProps<T extends ElementType> = {
+as : T;
+children : ReactNode;
+} & ComponentPropsWithoutRef<T>;
+
+function Container<C extends ElementType>({as , children , ...props} : ContainerProps<C>){
+  const Component = as || "div";
+  return <Component className="container" {...props}>{children}</Component>
+};
 */
