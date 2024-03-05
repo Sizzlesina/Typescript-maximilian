@@ -240,4 +240,45 @@ function MainComponent(){
   const ref = useRef<HTMLInputElement>(null)
   <Component label="This component is for an input" id="input" ref={ref}  />
 }
+
+@ Sharing Logic with unknown Type Casting:
+++ - We want to share some data from the custom input component to the custom form component:
+function MainComponent(){
+  function handleSave(data : unknown){
+    const extractedData = data as {
+      name : string;
+      age : string;
+    }
+    console.log(extractedData);
+  }
+return 
+(<main>
+  <Form onSave={handleSave}>
+    <Input label="Name" type="text" id="name"/>
+    <Input label="Age" type="number" id="age"/>
+  </Form>
+</main>);
+}
+! In here we dont know whats the value of the data that we enter as a parameter to the function so we set the type to "unknown" but we then know that we want to return the data as what form so we use the "as" method and then write the type shape of the data
+
+@ Form component (Custom form):
+type FormProps = ComponentPropsWithoutRef<'form'> & {
+  onSave : (value: unknown) => void;
+}
+function Form({onSave,children,...otherProps}:FormProps){
+  function handleSubmit(event : FormEvent<HTMLFormElement>){
+    event.preventDefault();
+
+    const formData = new FormData(event.currentTarget);
+    const data = Object.fromEntries(formData);
+    onSave(data);
+  }
+
+  return (
+    <form onSubmit={handleSubmit}>
+    {children}
+    </form>
+  )
+}
+! In this component we dont know the type of the data that we want to pass to the onSave handler so we set the data to unknown
 */
