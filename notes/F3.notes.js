@@ -281,4 +281,62 @@ function Form({onSave,children,...otherProps}:FormProps){
   )
 }
 ! In this component we dont know the type of the data that we want to pass to the onSave handler so we set the data to unknown
+
+@ How to exposing component API's with useImperativeHandle with typescript?:
+++  when we want to expose an API to a component like ref we do this:
+@ Main component:
+import {type FormHandle} from "./Form";
+function MainComponent(){
+  ++ const customForm = useRef<FormHandle>(null)
+
+  ++ function handleSave(data : unknown) {
+  ++  const extractedData = data as {
+  ++    name : string;
+  ++  };
+  ++  console.log(extractedData);
+  ++  customForm.current?.clear();
+  ++ }
+
+  return (<Form ref={customForm}>
+    <Input ref={customForm} type="text" label="Name" id="name" >
+  </Form>);
+}
+
+@ Form component:
+type FormHandle = {
+clear : () => void;
+}
+type FormProps = {
+    onSave : (data : unknown) => void;  
+}
+
+const Form = forwardRef<FormHandle,FormProps>(function Form({onSave,children,...otherProps},ref){
+  const form = useRef<HTMLFormElement>(null);
+
+  useImperativeHandle(ref,()=>{
+    return {
+      console.log("Clearing");
+      form.current?.reset();
+    }
+  })
+
+  function handleSubmit(event : FormEvent<HTMLFormElement>){
+    event.preventDefault();
+
+    const formData = new FormData(event.currentTarget);
+    const data = Object.fromEntries(formData);
+    onSave(data);
+  }
+
+  return (
+    <form ref={form} {...otherProps} onSubmit={handleSubmit}>
+      {children}
+    </form>
+  );
+});
+
+export default Form;
+
+! With a look to the codes above we can see that we can accept a ref in the Main component and instead of reset the ref and use the built in methods of the ref we make our own method and then apply our own methods to the ref enterd as a prop
+
 */
