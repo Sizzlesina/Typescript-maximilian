@@ -3,12 +3,13 @@
 {/* prettier-ignore */}
 
 /*
-@ Advance prop component rendering using props:
+@ Advanced prop component rendering using props:
 ++ - When we want to use a component inside another component but we want to render it conditionaly we can use this syntax:
 
 
 @ In the main component:
 
+import MyComponent from './MyComponent';
 function MainComponent() {
 let componentRender = ReactNode;
 if(condition){
@@ -19,7 +20,7 @@ if(condition){
   <>
   {componentRender}
   <h1>Hello World!</h1>  
-  </>
+  </> 
   )
 }
 
@@ -82,7 +83,7 @@ type MyComponentProps = FirstModeProps | SecondModeProps;
 
 function MyComponent(props : MyComponentProps){
   const {children,mode} = props;
-  if(mode "mode1"){
+  if(mode ==="mode1"){
     return (
       ...
     )
@@ -94,7 +95,7 @@ function MyComponent(props : MyComponentProps){
 }
 ! Now we can pass in the severity prop whenever we in the mode2 and dont pass it when we in the mode1
 
-@ How to create wrapper components (gow to pass in props in the wrapper components):
+@ How to create wrapper components (how to pass in props in the wrapper components):
 ? - imagine we want to create a custome input component so we must accept props like "type" and "disabled" and so many props that we can accept for a input component.
 ++ Example:
 type InputProps = {
@@ -132,7 +133,7 @@ function Input({label,...props}:InputProps){
 }
 ! We must merge the type with our own types to have both types 
 
-!HINT: We can use any generic value inside the '' inside the <> we can check on that in the autocomplition of the vscode
+!HINT: We can use any generic value inside the '' inside the <> we can check on that in the autocompletion of the vscode
 
 
 @ ElementType:
@@ -171,18 +172,19 @@ function Container({as,children}:ContainerProps){
   return <Component>{children}</Component>
 }
 ! Now the component accepts children and we can use it like this:
+import Button from './Button';
 function MainComponent(){
   return <Container as={Button}>Click Me!</Container>
 }
 
 ++ Step 2:
-type ContainerProps<T extends ElementType> = {
-as : T;
-children : ReactNode;
-} & ComponentPropsWithoutRef<T>;
+?  type ContainerProps<T extends ElementType> = {
+?   as : T;
+?   children : ReactNode;
+?   } & ComponentPropsWithoutRef<T>;
 
-function Container<C extends ElementType>({as,children}:ContainerProps<C>){
-  const Component = as || "div";
+? function Container<C extends ElementType>({as,children}:ContainerProps<C>){
+?  const Component = as || "div";
   return <Component className="container">{children}</Component>
 };
 
@@ -259,7 +261,7 @@ return
   </Form>
 </main>);
 }
-! In here we dont know whats the value of the data that we enter as a parameter to the function so we set the type to "unknown" but we then know that we want to return the data as what form so we use the "as" method and then write the type shape of the data
+! In here we dont know whats the value of the data that we enter as a parameter to the function so we set the type to "unknown" but we then know that we want to return the data as what form so we use the "as" method and then write the type shape of the data (This for when we know the type shape of data better than typescript)
 
 @ Form component (Custom form):
 type FormProps = ComponentPropsWithoutRef<'form'> & {
@@ -297,8 +299,9 @@ function MainComponent(){
   ++  customForm.current?.clear();
   ++ }
 
-  return (<Form ref={customForm}>
-    <Input ref={customForm} type="text" label="Name" id="name" >
+  return (
+    <Form ref={customForm}>
+    <Input type="text" label="Name" id="name" />
   </Form>);
 }
 

@@ -164,7 +164,7 @@ interface AppUser{
 interface AppAdmin extends Admin, AppUser{}
 
 @ More tips about the types:
-- Imagine that we want to store only a value that we chose for a variable so we can do this:
+- Imagine that we want to store only one value that we chose for a variable so we can do this:
 
 @ let role : "admin";
 @ role = "admin" 

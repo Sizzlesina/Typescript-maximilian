@@ -90,7 +90,7 @@ const MyComponent : FC<MYComponentProps> = ({name,id,children}) => {
  
 
 @ How to use states in typescript react? :
-- When in the default value of the states we have a complex value like null or [] or {} the value of the state will be set to <never> type
+- When in the default value of the states we have a complex value like null or [] or {} the type of the state will be set to <never>
 
 ++ So what can we do?
 - Imagine we want to add a array full of custom type that we create earlier so we create the state like this:
@@ -100,14 +100,23 @@ type CourseGoal = {
   id : number;
 }
 const [goals,setGoals] = useState<CourseGoal[]>([]);
-function handleAddGoal(){
-  setGoals();
-};
+
+function handleAddGoal(goal: string, summary: string){
+  setGoals((prevGoals) => {
+    const newGoal = CourseGoal = {
+      id  : Math.random(),
+      title : goal,
+      description : summary,
+    };
+    return [...prevGoals,newGoal];
+  });
+}
 
 ! Now we have a state full of arrays which includes title and description and id properties
 
 @ Similar types:
-- When in two components we have a same type (same values and properties ) we can export one type and then use it in the another one
+- When in two components we have a same type (same values and properties ) we can export one type and then use it in the another one (if we use "type" keyword)
+
 ++ Example:
 @ First component
 export type MainType = {
@@ -117,7 +126,7 @@ export type MainType = {
 }
 @ Second component:
 import{type MainType as CustomName} from "First component"
-type secondaryType = {
+type SecondaryType = {
   property : CustomName[];
 }
 
@@ -130,7 +139,8 @@ type secondaryType = {
 ++ Example:
 function handleSubmit(event : FormEvent<HTMLFormElement>){
   event.preventDefault();
-  new FormData(event.currentTarget) 
+  const formData = new FormData(event.currentTarget);
+  console.log(formData);
 }
 
 @ Using useRef hook in typescript:
@@ -157,7 +167,7 @@ function handleSubmit(event : FormEvent<HTMLFormElement>){
 - We can use a generic type for the ref which is optional and use a special type for the refs value in the input's
 ++ const ref = useRef<HTMLInputElement>(null);
 * Now everything's fine and we can use our ref
-
+!HINT: At all cases the type of ref is HTMLInputElement
 
 @ How to clear the form when we submit it?
 - We can use this command for event:
