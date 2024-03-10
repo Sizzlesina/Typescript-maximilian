@@ -31,4 +31,14 @@ const initialState : SliceState = {
   items : [];
 }
 ! Now we can use the states 
+
+@ How to write the reducer methods:
+- Every reducer method will get an state and action parameter same as the reducer function
+
+- We should use another special type for the action parameter and thats "PayloadAction" type
+
+-In the action "PayloadAction" type we can use a <> and then if our payload contains a payload then write the properties there
+
+- We should use the mutable syntax for this type of reducers
+
 */
