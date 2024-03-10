@@ -41,4 +41,8 @@ const initialState : SliceState = {
 
 - We should use the mutable syntax for this type of reducers
 
+
+@ How to use the redux store?:
+- We can wrap our application "App Component" into an Provider component that got imported from react/redux then it needs a store prop which the value of that is the store we create earlier
+
 */
