@@ -1,13 +1,31 @@
-import studentsImg from '../assets/students.jpg';
-import listImg from '../assets/list.jpg';
-import certificateImg from '../assets/certificate.jpg';
+/** @format */
+
+import studentsImg from "../assets/students.jpg";
+import listImg from "../assets/list.jpg";
+import certificateImg from "../assets/certificate.jpg";
+import Button from "../components/Button";
 
 export default function HomePage() {
   return (
-    <main id="home-page">
-      <h2>Our Mission: Your Success</h2>
+    <main id='home-page'>
+      <p>
+        <Button to='/sessions'>click Me</Button>
+      </p>
+      <p>
+        <Button>Click me</Button>
+      </p>
+      <p>
+        <Button textOnly={true}>Click me</Button>
+      </p>
+
+      <p>
+        <Button textOnly={true} to='/sessions'>
+          Click me
+        </Button>
+      </p>
+      {/* <h2>Our Mission: Your Success</h2>
       <section>
-        <img src={studentsImg} alt="A group of students" />
+        <img src={studentsImg} alt='A group of students' />
         <div>
           <h3>What we do</h3>
           <p>
@@ -20,7 +38,7 @@ export default function HomePage() {
       </section>
 
       <section>
-        <img src={listImg} alt="A list of sessions" />
+        <img src={listImg} alt='A list of sessions' />
         <div>
           <h3>What we offer</h3>
           <p>
@@ -31,7 +49,7 @@ export default function HomePage() {
         </div>
       </section>
       <section>
-        <img src={certificateImg} alt="A certificate" />
+        <img src={certificateImg} alt='A certificate' />
         <div>
           <h3>What you get</h3>
           <p>
@@ -39,7 +57,7 @@ export default function HomePage() {
             we are here to help you level up your React skills.
           </p>
         </div>
-      </section>
+      </section> */}
     </main>
   );
 }
