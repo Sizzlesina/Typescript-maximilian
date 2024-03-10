@@ -225,8 +225,4 @@ const newUser = merge<{name : string} , {age : number}>({name : "Max"},{age : 20
 const newUser = merge({name: "Max"}, {age : 20});
 ++ In here the typescript can detect the type of the data passed to the function itself and its no need to pass in the type of it
 
-
-
-
-
 */

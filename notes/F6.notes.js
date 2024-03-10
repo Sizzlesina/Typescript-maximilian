@@ -59,4 +59,18 @@ type DispatchFunction = () => AppDispatch;
 ++ Example:
 import {useDispatch} from 'react-redux'
 export const useSliceNameDispatch : DispatchFunction = useDispatch 
+
+@ How to write a type safe useSelector?
+++ Step 1:
+- Inside the store file we export a custom type with a custom name (e.g. RootState) 
+++ Step 2 : 
+- For the value of this custom type we write ReturnType<typeof store.getState>
+!HINT: In this way we will get the typeof states inside the reducer to then use it into the hooks.ts file
+
+++ Step 3:
+- in the hooks.ts file then we create a custom varibale for custom useSelector and then set the type of it to TypedUseSelectorHook and then pass in our own custom type for the generic type of this variable and the value for this custom selector variable will be useSelector 
+++ Example:
+import {RootState} from './store';
+import {TypedUseSelectorHook} from 'react-redux'
+const customSelector :TypedUserSelectorHook<RootState> = useSelector;
 */
