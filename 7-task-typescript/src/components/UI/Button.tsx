@@ -1,6 +1,7 @@
 /** @format */
 // Maximiloan Solution
-/* import type { ComponentPropsWithoutRef, ReactNode } from "react";
+
+import type { ComponentPropsWithoutRef, ReactNode } from "react";
 import { Link, type LinkProps } from "react-router-dom";
 
 type BaseProps = {
@@ -40,36 +41,3 @@ export default function Button(props: ButtonProps | ButtonLinkProps) {
     </button>
   );
 }
-*/
-
-// My Solution
-import { ComponentPropsWithoutRef } from "react";
-import { Link } from "react-router-dom";
-type LinkType = typeof Link;
-
-type BaseProps = {
-  textOnly?: boolean;
-};
-
-type ButtonProps = ComponentPropsWithoutRef<"button"> &
-  BaseProps & { to?: never };
-
-type ButtonLinkProps = ComponentPropsWithoutRef<LinkType> &
-  BaseProps & { to?: string };
-
-function isButtonLinkProps(
-  props: ButtonProps | ButtonLinkProps
-): props is ButtonLinkProps {
-  return "to" in props;
-}
-
-function Button(props: ButtonProps | ButtonLinkProps) {
-  const isTextOnly = props.textOnly && "button--text-only";
-
-  if (isButtonLinkProps(props)) {
-    return <Link {...props} className={`button ${isTextOnly}`}></Link>;
-  }
-  return <button {...props} className={`button ${isTextOnly}`}></button>;
-}
-
-export default Button;

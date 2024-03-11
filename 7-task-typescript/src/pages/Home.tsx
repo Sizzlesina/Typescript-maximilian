@@ -8,21 +8,6 @@ import Button from "../components/UI/Button";
 export default function HomePage() {
   return (
     <main id='home-page'>
-      <p>
-        <Button to='/sessions'>click Me</Button>
-      </p>
-      <p>
-        <Button>Click me</Button>
-      </p>
-      <p>
-        <Button textOnly={true}>Click me</Button>
-      </p>
-
-      <p>
-        <Button textOnly={true} to='/sessions'>
-          Click me
-        </Button>
-      </p>
       {/* <h2>Our Mission: Your Success</h2>
       <section>
         <img src={studentsImg} alt='A group of students' />
