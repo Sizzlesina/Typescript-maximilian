@@ -7,10 +7,11 @@ module.exports = {
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:react-hooks/recommended",
+    "plugin:unicorn/recommended",
   ],
   ignorePatterns: ["dist", ".eslintrc.cjs"],
   parser: "@typescript-eslint/parser",
-  plugins: ["react-refresh"],
+  plugins: ["@typescript-eslint", "react-refresh"],
   rules: {
     "no-unused-vars": "off",
     "@typescript-eslint/no-unused-vars": "warn",

@@ -1,7 +1,7 @@
 /** @format */
 
 import { useDispatch, useSelector, TypedUseSelectorHook } from "react-redux";
-import { AppDispatch, RootState } from "./store.ts";
+import { type AppDispatch, RootState } from "./store.ts";
 
 type DispatchFunction = () => AppDispatch;
 

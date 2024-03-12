@@ -28,7 +28,7 @@ export default function Timer({ name, duration }: TimerProps) {
           });
         }, 50);
         interval.current = timer;
-      } else if (!isRunning && interval.current) {
+      } else if (interval.current) {
         clearInterval(interval.current);
       }
       return () => clearInterval(timer);
