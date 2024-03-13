@@ -3,7 +3,7 @@
 import { NavLink } from "react-router-dom";
 import Button from "../Ui/Button";
 import { useState } from "react";
-import UpcomingSession from "../Sessions/UpcomingSession";
+import UpcomingSession from "../Sessions/UpcomingSessions";
 
 function MainHeader() {
   const [upcomingSessionVisible, setUpcomingSessionVisible] = useState(false);
