@@ -1,8 +1,11 @@
-import { SESSIONS } from '../dummy-sessions.ts'; // normally, we would probably load that from a server
+/** @format */
+
+import { SESSIONS } from "../dummy-sessions.ts"; // normally, we would probably load that from a server
+import SessionList from "../components/Sessions/SessionList.tsx";
 
 export default function SessionsPage() {
   return (
-    <main id="sessions-page">
+    <main id='sessions-page'>
       <header>
         <h2>Available mentoring sessions</h2>
         <p>
@@ -11,7 +14,7 @@ export default function SessionsPage() {
           you!
         </p>
       </header>
-      {/* Todo: Output list of sessions */}
+      <SessionList sessions={SESSIONS} />
     </main>
   );
 }
