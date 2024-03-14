@@ -23,16 +23,6 @@ type SessionContextValue = SessionState & {
 
 export const SessionsContext = createContext<SessionContextValue | null>(null);
 
-export function useSessionsContext() {
-  const context = useContext(SessionsContext);
-  if (!context) {
-    throw new Error(
-      "useSessionsContext must be used within a SessionsContextProvider"
-    );
-  }
-  return context;
-}
-
 type BookSessionAction = {
   type: "BOOK_SESSION";
   session: Session;
@@ -96,4 +86,13 @@ export default function SessionsContextProvider({
       {children}
     </SessionsContext.Provider>
   );
+}
+export function useSessionsContext() {
+  const context = useContext(SessionsContext);
+  if (!context) {
+    throw new Error(
+      "useSessionsContext must be used within a SessionsContextProvider"
+    );
+  }
+  return context;
 }

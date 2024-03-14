@@ -9,12 +9,12 @@ import Input from "../Ui/Input.tsx";
 
 type BookSessionProps = {
   session: Session;
-  onDone: () => void; // onDone will "tell" the parent component that the BookSession component should be removed from the DOM
+  onDone: () => void;
 };
 
 export default function BookSession({ session, onDone }: BookSessionProps) {
   const modal = useRef<ModalHandle>(null);
-  const sessionsCtx = useSessionsContext();
+  const { bookSession } = useSessionsContext();
 
   useEffect(() => {
     if (modal.current) {
@@ -27,8 +27,7 @@ export default function BookSession({ session, onDone }: BookSessionProps) {
 
     const formData = new FormData(event.currentTarget);
     const data = Object.fromEntries(formData);
-    console.log(data);
-    sessionsCtx.bookSession(session);
+    bookSession(session);
     onDone();
   }
 

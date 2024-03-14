@@ -1,6 +1,6 @@
 /** @format */
 
-import { forwardRef, useImperativeHandle, useRef } from "react";
+import { type ReactNode, forwardRef, useImperativeHandle, useRef } from "react";
 import { createPortal } from "react-dom";
 
 export type ModalHandle = {
@@ -8,7 +8,7 @@ export type ModalHandle = {
 };
 
 type ModalProps = {
-  children: React.ReactNode;
+  children: ReactNode;
   onClose: () => void;
 };
 
